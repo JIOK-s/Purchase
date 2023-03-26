@@ -4,6 +4,6 @@
 - DB : mysql 8.0.32
 - Spring boot : ver.2.7.10
 
-## 매입파트
-### ERD
+## ERD
+### 매입파트
 <img src="img/purchase-erd.png">
