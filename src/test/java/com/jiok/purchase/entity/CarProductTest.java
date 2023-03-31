@@ -85,6 +85,7 @@ class CarProductTest {
                 .fetchOne();
 
         Assertions.assertThat(findUserProduct).isEqualTo(userProductA);
+        
 
 
 
