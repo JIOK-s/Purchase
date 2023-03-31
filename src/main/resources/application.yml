@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/purchase
+    username: testuser
+    password: testuser1234
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hiberbate:
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+
