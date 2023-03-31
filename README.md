@@ -7,3 +7,4 @@
 ## ERD
 ### 매입파트
 <img src="img/purchase-erd.png">
+
