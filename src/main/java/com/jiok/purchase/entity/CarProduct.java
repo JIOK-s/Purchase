@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("Car")
 @ToString
 @Getter
+@NoArgsConstructor
 public class CarProduct extends UserProduct{
 
     private Integer mileage;
@@ -18,4 +19,11 @@ public class CarProduct extends UserProduct{
 
     private Boolean repairTf;
 
+    @Builder
+    public CarProduct(Long userProdNo, OriginProduct originProduct, Members members, Integer usedPeriod, Integer mileage, Boolean accidentTf, Boolean repairTf) {
+        super(userProdNo, originProduct, members, usedPeriod);
+        this.mileage = mileage;
+        this.accidentTf = accidentTf;
+        this.repairTf = repairTf;
+    }
 }

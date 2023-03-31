@@ -11,6 +11,7 @@ import java.util.List;
 @Table(name = "origin_product")
 @Getter
 @ToString
+@NoArgsConstructor
 public class OriginProduct {
 
     @Id
@@ -25,14 +26,10 @@ public class OriginProduct {
     @OneToMany(mappedBy = "originProduct")
     private List<UserProduct> userProducts = new ArrayList<>();
 
-    public OriginProduct() {
-    }
-
     @Builder
     public OriginProduct(Long prodNo, Long prodUniqNo, Integer orgPrice, List<UserProduct> userProducts) {
         this.prodNo = prodNo;
         this.prodUniqNo = prodUniqNo;
         this.orgPrice = orgPrice;
-        this.userProducts = userProducts;
     }
 }

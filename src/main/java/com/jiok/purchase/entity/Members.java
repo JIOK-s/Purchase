@@ -33,6 +33,5 @@ public class Members {
         this.mbrNm = mbrNm;
         this.mbrPhone = mbrPhone;
         this.mbrAddr = mbrAddr;
-        this.userProducts = userProducts;
     }
 }

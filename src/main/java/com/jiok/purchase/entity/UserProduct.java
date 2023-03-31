@@ -10,7 +10,9 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @Getter
-public class UserProduct {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn
+public abstract class UserProduct {
 
     @Id
     @GeneratedValue
@@ -27,6 +29,12 @@ public class UserProduct {
 
     private Integer usedPeriod;
 
+    public UserProduct(Long userProdNo, OriginProduct originProduct, Members members, Integer usedPeriod) {
+        this.userProdNo = userProdNo;
+        this.usedPeriod = usedPeriod;
+    }
+
+    /* 연관관계 mapping */
     public void changeOrginProduct(OriginProduct originProduct) {
         this.originProduct = originProduct;
         originProduct.getUserProducts().add(this);
@@ -37,11 +45,5 @@ public class UserProduct {
         members.getUserProducts().add(this);
     }
 
-    @Builder
-    public UserProduct(Long userProdNo, OriginProduct originProduct, Members members, Integer usedPeriod) {
-        this.userProdNo = userProdNo;
-        this.originProduct = originProduct;
-        this.members = members;
-        this.usedPeriod = usedPeriod;
-    }
+
 }
