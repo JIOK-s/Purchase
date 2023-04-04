@@ -2,8 +2,6 @@ package com.jiok.purchase.domain.userProduct;
 
 import com.jiok.purchase.domain.members.Members;
 import com.jiok.purchase.domain.originProduct.OriginProduct;
-import com.jiok.purchase.domain.userProduct.CarProduct;
-import com.jiok.purchase.entity.QCarProduct;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import org.assertj.core.api.Assertions;

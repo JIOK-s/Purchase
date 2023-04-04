@@ -1,7 +1,7 @@
 package com.jiok.purchase;
 
 import com.jiok.purchase.domain.Hello;
-import com.jiok.purchase.entity.QHello;
+import com.jiok.purchase.domain.QHello;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
