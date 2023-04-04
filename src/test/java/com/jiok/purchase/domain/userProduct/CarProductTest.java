@@ -1,19 +1,19 @@
-package com.jiok.purchase.entity;
+package com.jiok.purchase.domain.userProduct;
 
+import com.jiok.purchase.domain.members.Members;
+import com.jiok.purchase.domain.originProduct.OriginProduct;
+import com.jiok.purchase.domain.userProduct.CarProduct;
+import com.jiok.purchase.entity.QCarProduct;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 
 
 @SpringBootTest
@@ -85,7 +85,6 @@ class CarProductTest {
                 .fetchOne();
 
         /* 값 비교 */
-//        Assertions.assertThat(findUserProduct).isEqualTo(userProductA);
         Assertions.assertThat(findCarProduct).isEqualTo(carProductA);
         Assertions.assertThat(findCarProduct.getOriginProduct()).isEqualTo(originProductA);
         Assertions.assertThat(findCarProduct.getMembers()).isEqualTo(membersA);

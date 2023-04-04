@@ -1,4 +1,4 @@
-package com.jiok.purchase.entity;
+package com.jiok.purchase.domain;
 
 import lombok.Getter;
 

@@ -1,5 +1,6 @@
-package com.jiok.purchase.entity;
+package com.jiok.purchase.domain.members;
 
+import com.jiok.purchase.domain.userProduct.UserProduct;
 import lombok.*;
 
 import javax.persistence.*;

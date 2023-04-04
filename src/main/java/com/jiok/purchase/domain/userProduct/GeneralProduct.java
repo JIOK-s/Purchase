@@ -1,5 +1,7 @@
-package com.jiok.purchase.entity;
+package com.jiok.purchase.domain.userProduct;
 
+import com.jiok.purchase.domain.members.Members;
+import com.jiok.purchase.domain.originProduct.OriginProduct;
 import lombok.*;
 
 import javax.persistence.DiscriminatorValue;
