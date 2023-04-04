@@ -15,4 +15,4 @@
   - @builder가 상속되지 않는 점을 파악하여 어노테이션을 수정
 
 ## 회의록
-
+[링크] readmeDir/meetingLog/README.md
