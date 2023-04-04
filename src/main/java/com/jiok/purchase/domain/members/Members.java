@@ -1,5 +1,6 @@
-package com.jiok.purchase.entity;
+package com.jiok.purchase.domain.members;
 
+import com.jiok.purchase.domain.userProduct.UserProduct;
 import lombok.*;
 
 import javax.persistence.*;
@@ -33,6 +34,5 @@ public class Members {
         this.mbrNm = mbrNm;
         this.mbrPhone = mbrPhone;
         this.mbrAddr = mbrAddr;
-        this.userProducts = userProducts;
     }
 }

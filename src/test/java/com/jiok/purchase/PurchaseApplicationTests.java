@@ -1,7 +1,6 @@
 package com.jiok.purchase;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.jiok.purchase.entity.Hello;
+import com.jiok.purchase.domain.Hello;
 import com.jiok.purchase.entity.QHello;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.assertj.core.api.Assertions;

@@ -6,5 +6,10 @@
 
 ## ERD
 ### 매입파트
-<img src="img/purchase-erd.png">
+<img src="img/purchase-erd.png"/>
 
+## 발생한 문제와 해결
+- 문제
+  - 유저상품정보를 상속받는 차량상품과 일반상품이 상속되지 않는 문제 발생
+- 해결
+  - @builder가 상속되지 않는 점을 파악하여 어노테이션을 수정
