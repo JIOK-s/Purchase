@@ -1,4 +1,11 @@
 ## 업무일지
+- 2023-04-15
+  - jpa 설정(application.yml) 수정
+    - ddl-auto 설정 변경 및 show-sql 설정 변경 
+  - test코드 변경
+  - RDS 사용자 ID 생성 및 권한 부여
+  - EC2 환경에서 배포(진행중)
+
 
 - 2023-04-11
   - AWS EC2 환경 구축
