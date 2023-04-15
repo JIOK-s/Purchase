@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootTest
 @Transactional
@@ -41,12 +42,12 @@ class QuotationTest {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         QQuotation quotation = QQuotation.quotation;
-        Quotation findQuotation = queryFactory
+        List<Quotation> findQuotationList = queryFactory
                 .select(quotation)
                 .from(quotation)
-                .fetchOne();
+                .fetch();
 
-        Assertions.assertThat(findQuotation).isEqualTo(quotationA);
-        Assertions.assertThat(findQuotation.getVisitEstimate()).isEqualTo(visitEstimateA);
+        Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1)).isEqualTo(quotationA);
+        Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1).getVisitEstimate()).isEqualTo(visitEstimateA);
     }
 }

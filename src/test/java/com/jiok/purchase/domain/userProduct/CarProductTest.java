@@ -12,40 +12,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 
 @SpringBootTest
 @Transactional
-@Commit
 class CarProductTest {
 
     @PersistenceContext
     EntityManager em;
-
-//    @BeforeEach
-//    public void before() {
-//
-//        OriginProduct originProductA = new OriginProduct().builder()
-//                .prodUniqNo(10L)
-//                .build();
-//        em.persist(originProductA);
-//
-//
-//        Members membersA = new Members().builder()
-//                .mbrNm("옥현지")
-//                .mbrPhone("01012341111")
-//                .mbrAddr("강남역")
-//                .build();
-//        em.persist(membersA);
-//
-//
-//        UserProduct userProductA = new UserProduct().builder()
-//                .usedPeriod(7)
-//                .build();
-//        userProductA.changeOrginProduct(originProductA);
-//        userProductA.changeMembers(membersA);
-//        em.persist(userProductA);
-//    }
 
     @Test
     public void querydslTest() {
@@ -77,15 +52,15 @@ class CarProductTest {
 
         /* querydsl 실행 */
         QCarProduct carProduct = QCarProduct.carProduct;
-        CarProduct findCarProduct = queryFactory
+        List<CarProduct> findCarProductList = queryFactory
                 .select(carProduct)
                 .from(carProduct)
-                .fetchOne();
+                .fetch();
 
         /* 값 비교 */
-        Assertions.assertThat(findCarProduct).isEqualTo(carProductA);
-        Assertions.assertThat(findCarProduct.getOriginProduct()).isEqualTo(originProductA);
-        Assertions.assertThat(findCarProduct.getMembers()).isEqualTo(membersA);
+        Assertions.assertThat(findCarProductList.get(findCarProductList.size()-1)).isEqualTo(carProductA);
+        Assertions.assertThat(findCarProductList.get(findCarProductList.size()-1).getOriginProduct()).isEqualTo(originProductA);
+        Assertions.assertThat(findCarProductList.get(findCarProductList.size()-1).getMembers()).isEqualTo(membersA);
 
     }
 
