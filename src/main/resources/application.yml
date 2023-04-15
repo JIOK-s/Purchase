@@ -7,10 +7,11 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hiberbate:
         format_sql: true
+    show-sql: true
 
 logging:
   level:
