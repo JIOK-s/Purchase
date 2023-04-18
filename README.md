@@ -21,6 +21,10 @@
   - @builder 어노테이션을 수정
     - @builder 어노테이션은 상속되지 않기 때문에
 
+#### EC2 배포 쉘파일 no main manifest attribute in 에러
+  - 프로젝트명-0.0.1-SNAPSHOT-plain.jar 파일에서 처음 실행할 main 메소드를 찾지 못하는 문제
+    - 배포 스크립트에서 JAR_NAME을 프로젝트명-0.0.1-SNAPSHOT.jar로 명시한다.
+
 ## [알게된 점]
 #### 관계별 외래키 정리
   - 일대다, 다대다, 다대일, 일대일 등의 관계에서 다 쪽의 테이블에 외래키를 관리한다.

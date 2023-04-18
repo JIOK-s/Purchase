@@ -1,4 +1,9 @@
 ## 업무일지
+- 2023-04-18
+  - EC2 deploy.sh 작성 완료
+  - EC2 서버에서 배포 완료
+
+
 - 2023-04-15
   - jpa 설정(application.yml) 수정
     - ddl-auto 설정 변경 및 show-sql 설정 변경 
