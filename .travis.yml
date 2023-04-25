@@ -12,6 +12,9 @@ cache:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
 
+before_install:
+  - chmod +x gradlew
+
 script: "./gradlew clean build"
 
 # CI 실행 완료 시 메일로 알람
@@ -20,3 +23,4 @@ notifications:
     recipients:
       - hyunjiok10@gmail.com
       - lje911@gmail.com
+
