@@ -1,4 +1,10 @@
 ## 업무일지
+
+- 2023-04-25
+  - github에 push할 때, travis ci를 이용하여 자동 build할 수 있게 세팅
+  - IAM 사용자 생성 후 엑세스 키와 비밀 엑세스 키를 TRAVIS에 environment variable에 세팅
+
+
 - 2023-04-18
   - EC2 deploy.sh 작성 완료
   - EC2 서버에서 배포 완료

@@ -25,6 +25,15 @@
   - 프로젝트명-0.0.1-SNAPSHOT-plain.jar 파일에서 처음 실행할 main 메소드를 찾지 못하는 문제
     - 배포 스크립트에서 JAR_NAME을 프로젝트명-0.0.1-SNAPSHOT.jar로 명시한다.
 
+#### TRAVIS.YML 작성 시 gradle permission denied 에러
+  - YML파일에 다음과 같은 내용을 추가하면 된다.
+    - `before_install:  - chmod +x gradlew`
+
+#### TRAVIS 서버에서 빌드 및 테스트 시 DB 접근 불가 에러
+  - DB정보가 없는 APPLICATION.YML을 이용하여 GRADLE BUILD를 할 시 오류가 생김
+    - BUILD시 테스트를 제외한다.
+    - 코드는 다음과 같다. `./gradlew clean build -x test`
+
 ## [알게된 점]
 #### 관계별 외래키 정리
   - 일대다, 다대다, 다대일, 일대일 등의 관계에서 다 쪽의 테이블에 외래키를 관리한다.
