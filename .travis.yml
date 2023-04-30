@@ -25,6 +25,7 @@ before_deploy:
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
     bucket: jiok-service-s3
     region: ap-northeast-2
     skip_cleanup: true
@@ -40,5 +41,6 @@ notifications:
     recipients:
       - hyunjiok10@gmail.com
       - lje911@gmail.com
+
 
 
