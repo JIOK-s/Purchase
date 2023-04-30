@@ -35,6 +35,19 @@ deploy:
     on:
       branch: develop
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: jiok-service-s3
+    key: jiok-service.zip
+    bundle_type: zip
+    application: jiok-service-deploy-application
+    deployment_group: jiok-service-deploy-application-group
+    region: ap-northeast-2
+    wait-until-deployed: true
+    on:
+      branch: develop
+
 # CI 실행 완료 시 메일로 알람
 notifications:
   email:
@@ -42,4 +55,3 @@ notifications:
       - hyunjiok10@gmail.com
       - lje911@gmail.com
 
-  
