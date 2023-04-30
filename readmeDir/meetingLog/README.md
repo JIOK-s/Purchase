@@ -1,5 +1,13 @@
 ## 업무일지
 
+- 2023-04-30
+  - travis ci - s3 연동
+    - 개인 계정이 아닌 organization에서 진행되게 수정
+    - pr말고 push 될 때 build 되게끔 수정
+    - deploy될 때 master branch가 아닌 경우(develop)에도 deploy가 되게 진행
+  - travis ci - codedeploy연동
+
+
 - 2023-04-25
   - github에 push할 때, travis ci를 이용하여 자동 build할 수 있게 세팅
   - IAM 사용자 생성 후 엑세스 키와 비밀 엑세스 키를 TRAVIS에 environment variable에 세팅
