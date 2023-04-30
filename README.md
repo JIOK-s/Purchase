@@ -34,6 +34,21 @@
     - BUILD시 테스트를 제외한다.
     - 코드는 다음과 같다. `./gradlew clean build -x test`
 
+#### ### TRAVIS DEPLOY BRANCH 에러
+  - TRAVIS는 기본적으로 MASTER BRANCH가 아닌 경우에 DEPLOY를 진행하지 않게 세팅되어 있다.
+   - 다음과 같이 사용하고자 하는 BRANCH 권한을 열어야 한다.
+
+       ```yaml
+       deploy: 
+         on:  
+           branch: develop
+       ```
+
+
+### AWS CODEDEPLOY 에러
+  - appsec.yml 에서 destionation을 설정할 시 ‘~/ ‘는 먹히지 않는다
+    - /home/ec2-user/ 를 사용해야 한다.
+
 ## [알게된 점]
 #### 관계별 외래키 정리
   - 일대다, 다대다, 다대일, 일대일 등의 관계에서 다 쪽의 테이블에 외래키를 관리한다.
