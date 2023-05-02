@@ -1,4 +1,9 @@
 ## 업무일지
+- 2023-05-02
+  - application에서 db설정 분리
+  - travis 서버에서 jar, script, appspect만 ec2로 전달하도록 수정
+  - 자동 배포하도록 deploy.sh 생성
+
 
 - 2023-04-30
   - travis ci - s3 연동
