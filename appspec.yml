@@ -2,5 +2,5 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/app/jiok-service/Purchase/zip/
+    destination: /home/ec2-user/app/jiok-service/Purchase/
     overwrite: yes
