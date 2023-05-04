@@ -5,7 +5,7 @@ PROJECT_NAME=Purchase
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
 
-CURRENT_PID=$(pgrep -fl jiok-service | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep java)
 
 echo "현재 구동중인 애플리케이션pid: $CURRENT_PID"
 
