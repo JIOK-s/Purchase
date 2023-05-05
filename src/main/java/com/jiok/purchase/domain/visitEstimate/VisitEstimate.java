@@ -1,5 +1,6 @@
 package com.jiok.purchase.domain.visitEstimate;
 
+import com.jiok.purchase.domain.estimator.Estimator;
 import com.jiok.purchase.domain.quotation.Quotation;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,10 +31,20 @@ public class VisitEstimate {
     @OneToMany(mappedBy = "visitEstimate")
     private List<Quotation> quotations = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estmr_id")
+    private Estimator estimator;
+
     @Builder
-    public VisitEstimate(Long visitEstmNo, VisitEstmProcStCd visitEstmProcStCd, LocalDateTime visitEstmProcDtime) {
+    public VisitEstimate(Long visitEstmNo, VisitEstmProcStCd visitEstmProcStCd, LocalDateTime visitEstmProcDtime, Estimator estimator) {
         this.visitEstmNo = visitEstmNo;
         this.visitEstmProcStCd = visitEstmProcStCd;
         this.visitEstmProcDtime = visitEstmProcDtime;
+        this.estimator = estimator;
+    }
+
+    public void changeEstimator(Estimator estimator) {
+        this.estimator = estimator;
+        estimator.getVisitEstimateList().add(this);
     }
 }
