@@ -27,4 +27,4 @@ echo "> $JAR_NAME에 실행권한 추가"
 
 chmod +x $JAR_NAME
 
-nohup java -jar -Dspring.config.location=classpath:/application.yml,/home/ec2-user/app/jiok-service/Purchase/application-db.yml $JAR_NAME 2>&1 &
+nohup java -jar -Dspring.config.location=classpath:/application.yml,/home/ec2-user/app/jiok-service/Purchase/application-db.yml $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
