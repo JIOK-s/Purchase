@@ -1,5 +1,6 @@
 package com.jiok.purchase.domain.userProduct;
 
+import com.jiok.purchase.domain.marketPrice.MarketPrice;
 import com.jiok.purchase.domain.members.Members;
 import com.jiok.purchase.domain.originProduct.OriginProduct;
 import lombok.*;
@@ -30,9 +31,16 @@ public abstract class UserProduct {
 
     private Integer usedPeriod;
 
-    public UserProduct(Long userProdNo, OriginProduct originProduct, Members members, Integer usedPeriod) {
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mp_no")
+    private MarketPrice marketPrice;
+
+    public UserProduct(Long userProdNo, OriginProduct originProduct, Members members, Integer usedPeriod, MarketPrice marketPrice) {
         this.userProdNo = userProdNo;
+        this.originProduct = originProduct;
+        this.members = members;
         this.usedPeriod = usedPeriod;
+        this.marketPrice = marketPrice;
     }
 
     /* 연관관계 mapping */
@@ -44,6 +52,11 @@ public abstract class UserProduct {
     public void changeMembers(Members members) {
         this.members = members;
         members.getUserProducts().add(this);
+    }
+
+    public void changeMarketPrice(MarketPrice marketPrice) {
+        this.marketPrice = marketPrice;
+        marketPrice.changeUserProduct(this);
     }
 
 

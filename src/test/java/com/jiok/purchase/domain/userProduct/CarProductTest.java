@@ -1,5 +1,6 @@
 package com.jiok.purchase.domain.userProduct;
 
+import com.jiok.purchase.domain.marketPrice.MarketPrice;
 import com.jiok.purchase.domain.members.Members;
 import com.jiok.purchase.domain.originProduct.OriginProduct;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -25,27 +26,29 @@ class CarProductTest {
     @Test
     public void querydslTest() {
         /* entity setting */
-        OriginProduct originProductA = new OriginProduct().builder()
+        OriginProduct originProductA = OriginProduct.builder()
                 .prodUniqNo(10L)
                 .build();
         em.persist(originProductA);
 
 
-        Members membersA = new Members().builder()
+        Members membersA = Members.builder()
                 .mbrNm("옥현지")
                 .mbrPhone("01012341111")
                 .mbrAddr("강남역")
                 .build();
         em.persist(membersA);
 
+        MarketPrice marketPriceA = MarketPrice.builder().build();
+        em.persist(marketPriceA);
 
-        CarProduct carProductA = new CarProduct().builder()
+        CarProduct carProductA = CarProduct.builder()
                 .usedPeriod(7)
                 .build();
         carProductA.changeOrginProduct(originProductA);
         carProductA.changeMembers(membersA);
+        carProductA.changeMarketPrice(marketPriceA);
         em.persist(carProductA);
-
 
         /* JPAQueryFactory setting */
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
@@ -61,6 +64,7 @@ class CarProductTest {
         Assertions.assertThat(findCarProductList.get(findCarProductList.size()-1)).isEqualTo(carProductA);
         Assertions.assertThat(findCarProductList.get(findCarProductList.size()-1).getOriginProduct()).isEqualTo(originProductA);
         Assertions.assertThat(findCarProductList.get(findCarProductList.size()-1).getMembers()).isEqualTo(membersA);
+        Assertions.assertThat(findCarProductList.get(findCarProductList.size()-1).getMarketPrice()).isEqualTo(marketPriceA);
 
     }
 

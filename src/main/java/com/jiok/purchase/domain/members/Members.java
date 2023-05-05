@@ -29,7 +29,7 @@ public class Members {
     private List<UserProduct> userProducts = new ArrayList<>();
 
     @Builder
-    public Members(Long mbrId, String mbrNm, String mbrPhone, String mbrAddr, List<UserProduct> userProducts) {
+    public Members(Long mbrId, String mbrNm, String mbrPhone, String mbrAddr) {
         this.mbrId = mbrId;
         this.mbrNm = mbrNm;
         this.mbrPhone = mbrPhone;

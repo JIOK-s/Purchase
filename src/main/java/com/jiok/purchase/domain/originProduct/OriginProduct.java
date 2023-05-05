@@ -28,7 +28,7 @@ public class OriginProduct {
     private List<UserProduct> userProducts = new ArrayList<>();
 
     @Builder
-    public OriginProduct(Long prodNo, Long prodUniqNo, Integer orgPrice, List<UserProduct> userProducts) {
+    public OriginProduct(Long prodNo, Long prodUniqNo, Integer orgPrice) {
         this.prodNo = prodNo;
         this.prodUniqNo = prodUniqNo;
         this.orgPrice = orgPrice;
