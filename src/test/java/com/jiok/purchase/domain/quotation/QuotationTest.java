@@ -1,5 +1,6 @@
 package com.jiok.purchase.domain.quotation;
 
+import com.jiok.purchase.domain.marketPrice.MarketPrice;
 import com.jiok.purchase.domain.visitEstimate.VisitEstimate;
 import com.jiok.purchase.domain.visitEstimate.VisitEstmProcStCd;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -27,16 +28,17 @@ class QuotationTest {
                                         .visitEstmProcStCd(VisitEstmProcStCd.REQUEST)
                                         .visitEstmProcDtime(LocalDateTime.now())
                                         .build();
-
         em.persist(visitEstimateA);
+
+        MarketPrice marketPriceA = MarketPrice.builder().build();
+        em.persist(marketPriceA);
 
         Quotation quotationA = Quotation.builder()
                 .fennel(Funnel.MOBILE)
                 .qutProcStCd(QutProcStCd.REQUEST)
                 .build();
-
         quotationA.changeVisitEstimate(visitEstimateA);
-
+        quotationA.changeMarketPrice(marketPriceA);
         em.persist(quotationA);
 
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
@@ -49,5 +51,6 @@ class QuotationTest {
 
         Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1)).isEqualTo(quotationA);
         Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1).getVisitEstimate()).isEqualTo(visitEstimateA);
+        Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1).getMarketPrice()).isEqualTo(marketPriceA);
     }
 }
