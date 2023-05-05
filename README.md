@@ -53,5 +53,9 @@
 #### 관계별 외래키 정리
   - 일대다, 다대다, 다대일, 일대일 등의 관계에서 다 쪽의 테이블에 외래키를 관리한다.
 
+#### Builder Annotation 구현
+  - new 연산자 대신 클래스.builder()를 사용
+    - 클래스().builer()가 아님에 주의
+
 ## [업무일지]
 [링크](./readmeDir/meetingLog/README.md)
