@@ -1,5 +1,6 @@
 package com.jiok.purchase.domain.quotation;
 
+import com.jiok.purchase.domain.contract.Contract;
 import com.jiok.purchase.domain.marketPrice.MarketPrice;
 import com.jiok.purchase.domain.visitEstimate.VisitEstimate;
 import lombok.Builder;
@@ -34,6 +35,9 @@ public class Quotation {
     @JoinColumn(name = "mp_no")
     private MarketPrice marketPrice;
 
+    @OneToOne(mappedBy = "quotation")
+    private Contract contract;
+
     @Builder
     public Quotation(Long qutNo, Funnel fennel, QutProcStCd qutProcStCd, VisitEstimate visitEstimate, MarketPrice marketPrice) {
         this.qutNo = qutNo;
@@ -51,6 +55,10 @@ public class Quotation {
     public void changeMarketPrice(MarketPrice marketPrice) {
         this.marketPrice = marketPrice;
         marketPrice.changeQuotation(this);
+    }
+
+    public void changeContract(Contract contract) {
+        this.contract = contract;
     }
 }
 
