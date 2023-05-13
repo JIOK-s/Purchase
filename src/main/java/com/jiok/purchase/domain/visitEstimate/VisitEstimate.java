@@ -29,7 +29,7 @@ public class VisitEstimate {
     private LocalDateTime visitEstmProcDtime;
 
     @OneToMany(mappedBy = "visitEstimate")
-    private List<Quotation> quotations = new ArrayList<>();
+    private List<Quotation> quotationList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "estmr_id")

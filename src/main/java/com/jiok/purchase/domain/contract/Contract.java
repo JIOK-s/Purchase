@@ -1,5 +1,6 @@
 package com.jiok.purchase.domain.contract;
 
+import com.jiok.purchase.domain.delivery.Delivery;
 import com.jiok.purchase.domain.quotation.Quotation;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,6 +9,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "contract")
@@ -42,6 +45,9 @@ public class Contract {
     @JoinColumn(name = "qut_no")
     private Quotation quotation;
 
+    @OneToOne(mappedBy = "contract")
+    private Delivery delivery;
+
     @Builder
     public Contract(Long contrNo, LocalDateTime contrDtime, Double contrPrice, String contrAccntNo, String contrAccntNm, Boolean contrCmplYn, Boolean contrDlvYn, LocalDateTime contrPayDtime, NmDivdCd nmDivdCd, Quotation quotation) {
         this.contrNo = contrNo;
@@ -59,5 +65,9 @@ public class Contract {
     public void changeQuotation(Quotation quotation) {
         this.quotation = quotation;
         quotation.changeContract(this);
+    }
+
+    public void changeDelivery(Delivery delivery) {
+        this.delivery = delivery;
     }
 }

@@ -49,7 +49,7 @@ public class Quotation {
 
     public void changeVisitEstimate(VisitEstimate visitEstimate) {
         this.visitEstimate = visitEstimate;
-        visitEstimate.getQuotations().add(this);
+        visitEstimate.getQuotationList().add(this);
     }
 
     public void changeMarketPrice(MarketPrice marketPrice) {
