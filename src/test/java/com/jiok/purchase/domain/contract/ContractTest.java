@@ -21,7 +21,7 @@ public class ContractTest {
     private EntityManager em;
 
     @Test
-    public void contractTest(){
+    public void ContractTest(){
 
         Quotation quotationA = Quotation.builder()
                 .fennel(Funnel.MOBILE)
