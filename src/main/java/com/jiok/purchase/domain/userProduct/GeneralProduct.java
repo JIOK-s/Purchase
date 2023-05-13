@@ -6,7 +6,9 @@ import com.jiok.purchase.domain.originProduct.OriginProduct;
 import lombok.*;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+@Entity
 @DiscriminatorValue("General")
 @ToString
 @Getter
