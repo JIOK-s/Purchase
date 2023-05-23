@@ -7,20 +7,30 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-@SpringBootTest
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@AutoConfigureMockMvc
 @Transactional
 class PurchaseApplicationTests {
 
 	@Autowired
 	EntityManager em;
 
+	@Autowired
+	MockMvc mockMvc;
+
 	@Test
-	@DisplayName("첫 테스트양")
 	void contextLoads() {
 
 		Hello hello = new Hello();
@@ -35,4 +45,20 @@ class PurchaseApplicationTests {
 		Assertions.assertThat(result.getId()).isEqualTo(hello.getId());
 	}
 
+	@Test
+	public void helloControllerTest() throws Exception {
+		mockMvc.perform(get("/hello"))
+				.andExpect(status().isOk())
+				.andExpect(content().string("hello jiok"))
+				.andDo(print());
+	}
+
+	@Test
+	public void testMainMethod() {
+		String[] args = {}; // main() 메소드에 전달할 인자를 정의합니다.
+		PurchaseApplication.main(args); // main() 메소드를 호출합니다.
+		// 추가적인 검증 로직을 작성할 수 있습니다.
+	}
+
 }
+

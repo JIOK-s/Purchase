@@ -1,5 +1,6 @@
 package com.jiok.purchase.domain.quotation;
 
+import com.jiok.purchase.domain.delivery.DlvProcStCd;
 import com.jiok.purchase.domain.marketPrice.MarketPrice;
 import com.jiok.purchase.domain.visitEstimate.VisitEstimate;
 import com.jiok.purchase.domain.visitEstimate.VisitEstmProcStCd;
@@ -50,6 +51,8 @@ class QuotationTest {
                 .fetch();
 
         Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1)).isEqualTo(quotationA);
+        Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1).getFennel().getCode()).isEqualTo(Funnel.MOBILE.getCode());
+        Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1).getQutProcStCd().getCode()).isEqualTo(QutProcStCd.REQUEST.getCode());
         Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1).getVisitEstimate()).isEqualTo(visitEstimateA);
         Assertions.assertThat(findQuotationList.get(findQuotationList.size()-1).getMarketPrice()).isEqualTo(marketPriceA);
     }

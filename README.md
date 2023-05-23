@@ -34,7 +34,7 @@
     - BUILD시 테스트를 제외한다.
     - 코드는 다음과 같다. `./gradlew clean build -x test`
 
-#### ### TRAVIS DEPLOY BRANCH 에러
+#### TRAVIS DEPLOY BRANCH 에러
   - TRAVIS는 기본적으로 MASTER BRANCH가 아닌 경우에 DEPLOY를 진행하지 않게 세팅되어 있다.
    - 다음과 같이 사용하고자 하는 BRANCH 권한을 열어야 한다.
 

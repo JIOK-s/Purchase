@@ -1,6 +1,7 @@
 package com.jiok.purchase.domain.delivery;
 
 import com.jiok.purchase.domain.contract.Contract;
+import com.jiok.purchase.domain.contract.NmDivdCd;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,9 @@ class DeliveryTest {
                 .build();
         em.persist(contractA);
 
-        Delivery deliveryA = Delivery.builder()
+        Delivery deliveryA = Delivery
+                .builder()
+                .dlvProcStCd(DlvProcStCd.DELIVERY_ORDER)
                 .build();
         deliveryA.changeContract(contractA);
         em.persist(deliveryA);
@@ -41,6 +44,7 @@ class DeliveryTest {
                 .fetch();
 
         Assertions.assertThat(findDeliveryList.get(findDeliveryList.size()-1)).isEqualTo(deliveryA);
+        Assertions.assertThat(findDeliveryList.get(findDeliveryList.size()-1).getDlvProcStCd().getCode()).isEqualTo(DlvProcStCd.DELIVERY_ORDER.getCode());
         Assertions.assertThat(findDeliveryList.get(findDeliveryList.size()-1).getContract()).isEqualTo(contractA);
     }
 }
