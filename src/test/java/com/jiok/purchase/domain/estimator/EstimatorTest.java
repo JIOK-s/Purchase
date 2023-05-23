@@ -1,5 +1,6 @@
 package com.jiok.purchase.domain.estimator;
 
+import com.jiok.purchase.domain.contract.NmDivdCd;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,9 @@ class EstimatorTest {
     @Test
     public void EstimatorTest(){
 
-        Estimator estimatorA = Estimator.builder().build();
+        Estimator estimatorA = Estimator.builder()
+                .estmrLoc(EstmrLoc.SEOUL)
+                .build();
         em.persist(estimatorA);
 
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
@@ -35,6 +38,7 @@ class EstimatorTest {
                 .fetch();
 
         Assertions.assertThat(findEstimatorList.get(findEstimatorList.size()-1)).isEqualTo(estimatorA);
+        Assertions.assertThat(findEstimatorList.get(findEstimatorList.size()-1).getEstmrLoc().getCode()).isEqualTo(EstmrLoc.SEOUL.getCode());
     }
 
 }

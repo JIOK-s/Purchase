@@ -1,6 +1,7 @@
 package com.jiok.purchase.domain.visitEstimate;
 
 import com.jiok.purchase.domain.estimator.Estimator;
+import com.jiok.purchase.domain.quotation.QutProcStCd;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -47,6 +48,7 @@ class VisitEstimateTest {
                 .fetch();
 
         Assertions.assertThat(findVisitEstimateList.get(findVisitEstimateList.size()-1)).isEqualTo(visitEstimateA);
+        Assertions.assertThat(findVisitEstimateList.get(findVisitEstimateList.size()-1).getVisitEstmProcStCd().getCode()).isEqualTo(VisitEstmProcStCd.REQUEST.getCode());
         Assertions.assertThat(findVisitEstimateList.get(findVisitEstimateList.size()-1).getEstimator()).isEqualTo(estimatorA);
     }
 }

@@ -30,6 +30,7 @@ public class ContractTest {
         em.persist(quotationA);
 
         Contract contractA = Contract.builder()
+                .nmDivdCd(NmDivdCd.PERSONAL)
                 .build();
         contractA.changeQuotation(quotationA);
         em.persist(contractA);
@@ -43,6 +44,7 @@ public class ContractTest {
                 .fetch();
 
         Assertions.assertThat(findContractList.get(findContractList.size()-1)).isEqualTo(contractA);
+        Assertions.assertThat(findContractList.get(findContractList.size()-1).getNmDivdCd().getCode()).isEqualTo(NmDivdCd.PERSONAL.getCode());
         Assertions.assertThat(findContractList.get(findContractList.size()-1).getQuotation()).isEqualTo(quotationA);
 
     }
