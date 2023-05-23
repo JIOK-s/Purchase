@@ -1,6 +1,16 @@
 # 지옥이들의 쇼핑몰 프로젝트
 ## [워크플로우]
+### 배포플로우
 <img src="img/work_flow.png">
+
+### 코드 작성 플로우(TDD)
+1. 테스트코드 작성
+2. 로직 작성
+3. 테스트 확인
+4. jacoco를 통해 테스트커버리지 80 이상 시 빌드 가능
+5. 레포트 확인
+
+<img src="img/purchase-test-coverage.png">
 
 ## [개발환경]
 - JAVA ver.11.0.13
