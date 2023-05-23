@@ -1,4 +1,23 @@
 ## 업무일지
+- 2023-05-23
+  - jacoco 설치 및 테스트
+    - 라인 커버리지 80%를 목표로 설정
+    - main() 메소드 커버할 수 있도록 테스트 케이스를 추가한다
+
+        ```java
+        public class TestMainMethod {
+            @Test
+            public void testMainMethod() {
+                String[] args = {};
+                클래스명.main(args); // main() 메소드를 호출
+            }
+        }
+        ```
+
+    - enum의 getCode() 커버할 수 있도록 테스트 케이스 수정
+    - QClass 및 lombok 테스트 제외
+
+
 - 2023-05-13
   - 매입 entity 작성 완료
   - entity 테스트 코드 작성 완료
