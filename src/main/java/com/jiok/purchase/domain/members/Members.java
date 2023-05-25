@@ -25,14 +25,17 @@ public class Members {
 
     private String mbrAddr;
 
+    private String mbrDtlAddr;
+
     @OneToMany(mappedBy = "members")
     private List<UserProduct> userProducts = new ArrayList<>();
 
     @Builder
-    public Members(Long mbrId, String mbrNm, String mbrPhone, String mbrAddr) {
+    public Members(Long mbrId, String mbrNm, String mbrPhone, String mbrAddr, String mbrDtlAddr) {
         this.mbrId = mbrId;
         this.mbrNm = mbrNm;
         this.mbrPhone = mbrPhone;
         this.mbrAddr = mbrAddr;
+        this.mbrDtlAddr = mbrDtlAddr;
     }
 }
