@@ -1,4 +1,12 @@
 ## 업무일지
+
+- 2023-05-25
+  - Members Repository 생성 및 save, findByMbrId 함수 작성
+  - Hello class Test 코드 수정
+  - ERD Members 테이블 데이터 타입 작성
+  - ERD Members 테이블 상세주소 컬럼 추가
+
+
 - 2023-05-23
   - jacoco 설치 및 테스트
     - 라인 커버리지 80%를 목표로 설정
