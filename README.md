@@ -54,10 +54,10 @@
            branch: develop
        ```
 
-
-### AWS CODEDEPLOY 에러
+#### AWS CODEDEPLOY 에러
   - appsec.yml 에서 destionation을 설정할 시 ‘~/ ‘는 먹히지 않는다
     - /home/ec2-user/ 를 사용해야 한다.
+
 
 ## [알게된 점]
 #### 관계별 외래키 정리
@@ -66,6 +66,14 @@
 #### Builder Annotation 구현
   - new 연산자 대신 클래스.builder()를 사용
     - 클래스().builer()가 아님에 주의
+
+#### @Autowired vs @PersistenceContext
+  - @Autowired가 스프링 빈을 주입
+  - @PersistenceContext는 JPA 스펙에서 제공하는 기능인데, 영속성 컨텍스트를 주입하는 표준 애노테이션이다.
+
+#### Spring Data JPA 사용자 정의 Repository 사용시 @REPOSITORY를 사용하지 않아도 의존성 주입이 가능
+  - Spring 로딩시 자동으로 사용자 정의 basePackage에서 접미어가 Impl인 것을 찿아 JapRespoitory Injection시에 Impl 객체를 삽입한다
+
 
 ## [업무일지]
 [링크](./readmeDir/meetingLog/README.md)

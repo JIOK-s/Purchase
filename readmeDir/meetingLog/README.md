@@ -1,4 +1,8 @@
 ## 업무일지
+- 2023-06-01
+  - jpaRepository와 custumRepository를 모두 사용할 수 있게 수정
+  - membersService test 및 save 구현
+
 
 - 2023-05-25
   - Members Repository 생성 및 save, findByMbrId 함수 작성
