@@ -7,33 +7,25 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
-public class MembersRepositoryImpl implements MembersRepository {
+public class MembersCustomRepositoryImpl implements MembersCustomRepository {
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public Members findByMbrId(Long reqMbrId) {
-
-        QMembers members = QMembers.members;
+    public Members findByMbrPhone(String reqMbrPhone) {
 
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+
+        QMembers members = QMembers.members;
 
         Members findByMbrId = queryFactory
                 .select(members)
                 .from(members)
-                .where(members.mbrId.eq(reqMbrId))
+                .where(members.mbrPhone.eq(reqMbrPhone))
                 .fetchOne();
 
         return findByMbrId;
-    }
-
-    @Override
-    public Long save(Members reqMembers) {
-
-        em.persist(reqMembers);
-
-        return reqMembers.getMbrId();
     }
 
 
