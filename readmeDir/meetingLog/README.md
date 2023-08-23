@@ -1,4 +1,14 @@
 ## 업무일지
+- 2023-06-06
+  - originProduct repository 및 service 만들기
+  - contractRepository, customRepository 생성 및 contractService test 작성
+  - 개발 스케쥴 조정
+  - frontend 기술 조사 및 기간 산정
+    - 대상 기술 : react, vue
+    - 조사 기간 : 2~4주
+    - 블로그 정리
+
+
 - 2023-08-23
   - generalProductManegement API 개발
 
