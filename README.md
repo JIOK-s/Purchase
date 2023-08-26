@@ -58,6 +58,11 @@
   - appsec.yml 에서 destionation을 설정할 시 ‘~/ ‘는 먹히지 않는다
     - /home/ec2-user/ 를 사용해야 한다.
 
+#### GITHUB 충돌
+  - 원인: pr의 경우도 원격의 sync fork와 local의 pull이 필요한데 그 절차가 생략되었다.
+    - 해결 : local 브랜치에 새로운 브랜치를 따서 원격의 내용을 pull 받고, non-fast-forward 방식으로 merge 한다. 코드는 다음과 같다.
+      `git merge --no-ff hyunji-ok-develop`
+
 
 ## [알게된 점]
 #### 관계별 외래키 정리
@@ -74,6 +79,16 @@
 #### Spring Data JPA 사용자 정의 Repository 사용시 @REPOSITORY를 사용하지 않아도 의존성 주입이 가능
   - Spring 로딩시 자동으로 사용자 정의 basePackage에서 접미어가 Impl인 것을 찿아 JapRespoitory Injection시에 Impl 객체를 삽입한다
 
+#### Fast-Forward와 Non-Fast-Forward 병합의 주요 차이점
+  - Fast-Forward:
+    - 브랜치 히스토리가 선형적으로 유지됩니다.
+    - 추가 커밋이 생성되지 않습니다.
+    - 작업 내용이 병합 대상 브랜치와 현재 브랜치 간의 변경 내용을 통합하기 어려울 경우에는 사용되지 않을 수 있습니다.
+  - Non-Fast-Forward:
+    - 브랜치 히스토리가 가지각색으로 보이게 됩니다.
+    - 추가 병합 커밋이 생성되어 브랜치 간의 변경 내용을 통합합니다.
+    - 작업 내용이 병합 대상 브랜치와 현재 브랜치 간의 변경 내용을 세밀하게 통합해야 할 경우에 사용됩니다.
 
 ## [업무일지]
-[링크](./readmeDir/meetingLog/README.md)
+[2023년 2분기 업무일지](./readmeDir/meetingLog/2023Y_2Q.md)<br>
+[2023년 3분기 업무일지](./readmeDir/meetingLog/2023Y_3Q.md)<br>

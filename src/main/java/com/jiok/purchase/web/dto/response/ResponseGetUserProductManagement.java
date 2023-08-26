@@ -15,12 +15,14 @@ public class ResponseGetUserProductManagement {
     private Long userProdNo;
     private Integer usedPeriod;
     private Long mbrId;
+    private String mbrPhone;
 
     @Builder
-    public ResponseGetUserProductManagement(Long userProdNo, Integer usedPeriod, Long mbrId) {
+    public ResponseGetUserProductManagement(Long userProdNo, Integer usedPeriod, Long mbrId, String mbrPhone) {
         this.userProdNo = userProdNo;
         this.usedPeriod = usedPeriod;
         this.mbrId = mbrId;
+        this.mbrPhone = mbrPhone;
     }
 
     public List<ResponseGetUserProductManagement> toGeneralDto(List<GeneralProduct> generalProductList) {
@@ -29,9 +31,10 @@ public class ResponseGetUserProductManagement {
                         .userProdNo(item.getUserProdNo())
                         .usedPeriod(item.getUsedPeriod())
                         .mbrId(item.getMembers().getMbrId())
+                        .mbrPhone(item.getMembers().getMbrPhone())
                         .build())
                 .collect(Collectors.toList());
-    };
+    }
 
     public ResponseGetUserProductManagement toCarDto(CarProduct carProduct) {
         return ResponseGetUserProductManagement.builder()
@@ -39,6 +42,6 @@ public class ResponseGetUserProductManagement {
                 .usedPeriod(carProduct.getUsedPeriod())
                 .mbrId(carProduct.getMembers().getMbrId())
                 .build();
-    };
+    }
 
 }
