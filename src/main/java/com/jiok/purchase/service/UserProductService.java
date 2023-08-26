@@ -17,4 +17,8 @@ public class UserProductService {
         return generalProductRepository.findUserProductManagement(paramGeneralProduct);
     }
 
+    public GeneralProduct save(GeneralProduct generalProduct) {
+        return generalProductRepository.save(generalProduct);
+    }
+
 }

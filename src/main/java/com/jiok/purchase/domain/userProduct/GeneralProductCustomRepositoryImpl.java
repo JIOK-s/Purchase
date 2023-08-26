@@ -15,8 +15,8 @@ public class GeneralProductCustomRepositoryImpl implements GeneralProductCustomR
     @PersistenceContext
     private EntityManager em;
 
-    private QGeneralProduct generalProduct = QGeneralProduct.generalProduct;
-    private QMembers members = QMembers.members;
+    private final QGeneralProduct generalProduct = QGeneralProduct.generalProduct;
+    private final QMembers members = QMembers.members;
 
     @Override
     public List<GeneralProduct> findUserProductManagement(GeneralProduct paramGeneralProduct) {
@@ -28,7 +28,8 @@ public class GeneralProductCustomRepositoryImpl implements GeneralProductCustomR
                 .join(generalProduct.members, members)
                 .where(
                         userProdNoEq(paramGeneralProduct.getUserProdNo()),
-                        usedPeriodEq(paramGeneralProduct.getUsedPeriod())
+                        usedPeriodEq(paramGeneralProduct.getUsedPeriod()),
+                        mbrIdEq(paramGeneralProduct.getMembers()==null ? null : paramGeneralProduct.getMembers().getMbrId())
                 )
                 .fetch();
     }
@@ -45,5 +46,12 @@ public class GeneralProductCustomRepositoryImpl implements GeneralProductCustomR
             return null;
         }
         return generalProduct.usedPeriod.eq(usedPeriod);
+    }
+
+    private BooleanExpression mbrIdEq(Long mbrId) {
+        if (mbrId == null) {
+            return null;
+        }
+        return generalProduct.members.mbrId.eq(mbrId);
     }
 }
