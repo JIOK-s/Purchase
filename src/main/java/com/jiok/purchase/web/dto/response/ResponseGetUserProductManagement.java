@@ -25,7 +25,7 @@ public class ResponseGetUserProductManagement {
         this.mbrPhone = mbrPhone;
     }
 
-    public List<ResponseGetUserProductManagement> toGeneralDto(List<GeneralProduct> generalProductList) {
+    public static List<ResponseGetUserProductManagement> toGeneralDto(List<GeneralProduct> generalProductList) {
         return generalProductList.stream()
                 .map(item -> ResponseGetUserProductManagement.builder()
                         .userProdNo(item.getUserProdNo())

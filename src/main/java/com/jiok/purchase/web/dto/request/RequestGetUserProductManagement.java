@@ -14,7 +14,7 @@ public class RequestGetUserProductManagement {
     private boolean isCar;
     private Long mbrId;
 
-    public GeneralProduct toGeneralEntity() {
+    public static GeneralProduct toGeneralEntity(Long userProdNo, Integer usedPeriod, Long mbrId) {
         return GeneralProduct.builder()
                 .userProdNo(userProdNo)
                 .usedPeriod(usedPeriod)
