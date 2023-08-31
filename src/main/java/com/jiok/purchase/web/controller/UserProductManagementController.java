@@ -1,8 +1,8 @@
 package com.jiok.purchase.web.controller;
 
-import com.jiok.purchase.domain.members.Members;
 import com.jiok.purchase.domain.userProduct.GeneralProduct;
 import com.jiok.purchase.service.UserProductService;
+import com.jiok.purchase.web.dto.request.RequestGetUserProductManagement;
 import com.jiok.purchase.web.dto.response.ResponseGetUserProductManagement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,30 +19,32 @@ import java.util.List;
 public class UserProductManagementController {
     private final UserProductService userProductService;
 
-    @GetMapping("/getUserProductManagement")
+    /**
+     * 구매 관리 조회
+     * @param paramUserProdNo: 유저상품번호
+     * @param paramUsedPeriod
+     * @param paramMbrId
+     * @return
+     */
+    @GetMapping("/management")
     public ResponseEntity<List<ResponseGetUserProductManagement>> getUserProductManagement(
-            @RequestParam(name = "userProdNo", required = false) Long userProdNo,
-            @RequestParam(name = "usedPeriod", required = false) Integer usedPeriod,
-            @RequestParam(name = "mbrId", required = false) Long mbrId
+            @RequestParam(name = "userProdNo", required = false) Long paramUserProdNo,
+            @RequestParam(name = "usedPeriod", required = false) Integer paramUsedPeriod,
+            @RequestParam(name = "mbrId", required = false) Long paramMbrId
     ) {
-        // TODO:DTO로 넣기.
         // entity로 바꾼다
-        GeneralProduct generalProduct = GeneralProduct.builder()
-                .userProdNo(userProdNo)
-                .usedPeriod(usedPeriod)
-                .members(Members.builder().mbrId(mbrId).build())
-                .build();
+        GeneralProduct generalProduct =
+                RequestGetUserProductManagement.toGeneralEntity(paramUserProdNo, paramUsedPeriod, paramMbrId);
 
         // service 호출
-        List<GeneralProduct> generalProductList = userProductService.findUserProductManagement(generalProduct);
+        List<GeneralProduct> generalProductList =
+                userProductService.findUserProductManagement(generalProduct);
 
         // dto로 바꾼다.
-        ResponseGetUserProductManagement responseGetUserProductManagement = new ResponseGetUserProductManagement();
-        List<ResponseGetUserProductManagement> responseGetUserProductManagementList = responseGetUserProductManagement.toGeneralDto(generalProductList);
+        List<ResponseGetUserProductManagement> responseGetUserProductManagementList =
+                ResponseGetUserProductManagement.toGeneralDto(generalProductList);
 
         // return
         return ResponseEntity.ok().body(responseGetUserProductManagementList);
-
     }
-
 }

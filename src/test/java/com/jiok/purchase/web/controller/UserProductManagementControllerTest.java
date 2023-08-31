@@ -68,7 +68,7 @@ class UserProductManagementControllerTest {
     @Test
     public void userProductManage_test() {
         // given
-        String url = "http://localhost:" + port + "/v1/userProduct/getUserProductManagement";
+        String url = "http://localhost:" + port + "/v1/userProduct/management";
 
 
         // when
