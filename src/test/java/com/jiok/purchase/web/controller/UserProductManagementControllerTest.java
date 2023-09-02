@@ -4,7 +4,7 @@ import com.jiok.purchase.domain.members.Members;
 import com.jiok.purchase.domain.userProduct.GeneralProduct;
 import com.jiok.purchase.service.MembersService;
 import com.jiok.purchase.service.UserProductService;
-import com.jiok.purchase.web.dto.response.ResponseGetUserProductManagement;
+import com.jiok.purchase.web.dto.response.ResponseUserProductManagement;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -72,7 +72,7 @@ class UserProductManagementControllerTest {
 
 
         // when
-        ResponseEntity<List<ResponseGetUserProductManagement>> responseEntity = restTemplate.exchange(
+        ResponseEntity<List<ResponseUserProductManagement>> responseEntity = restTemplate.exchange(
                 url,
                 HttpMethod.GET,
                 null,

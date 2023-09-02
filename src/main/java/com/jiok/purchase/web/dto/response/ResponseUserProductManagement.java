@@ -11,23 +11,23 @@ import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
-public class ResponseGetUserProductManagement {
+public class ResponseUserProductManagement {
     private Long userProdNo;
     private Integer usedPeriod;
     private Long mbrId;
     private String mbrPhone;
 
     @Builder
-    public ResponseGetUserProductManagement(Long userProdNo, Integer usedPeriod, Long mbrId, String mbrPhone) {
+    public ResponseUserProductManagement(Long userProdNo, Integer usedPeriod, Long mbrId, String mbrPhone) {
         this.userProdNo = userProdNo;
         this.usedPeriod = usedPeriod;
         this.mbrId = mbrId;
         this.mbrPhone = mbrPhone;
     }
 
-    public static List<ResponseGetUserProductManagement> toGeneralDto(List<GeneralProduct> generalProductList) {
+    public static List<ResponseUserProductManagement> toGeneralDto(List<GeneralProduct> generalProductList) {
         return generalProductList.stream()
-                .map(item -> ResponseGetUserProductManagement.builder()
+                .map(item -> ResponseUserProductManagement.builder()
                         .userProdNo(item.getUserProdNo())
                         .usedPeriod(item.getUsedPeriod())
                         .mbrId(item.getMembers().getMbrId())
@@ -36,8 +36,8 @@ public class ResponseGetUserProductManagement {
                 .collect(Collectors.toList());
     }
 
-    public ResponseGetUserProductManagement toCarDto(CarProduct carProduct) {
-        return ResponseGetUserProductManagement.builder()
+    public ResponseUserProductManagement toCarDto(CarProduct carProduct) {
+        return ResponseUserProductManagement.builder()
                 .userProdNo(carProduct.getUserProdNo())
                 .usedPeriod(carProduct.getUsedPeriod())
                 .mbrId(carProduct.getMembers().getMbrId())

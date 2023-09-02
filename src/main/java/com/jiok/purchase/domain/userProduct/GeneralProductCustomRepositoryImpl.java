@@ -1,6 +1,7 @@
 package com.jiok.purchase.domain.userProduct;
 
 import com.jiok.purchase.domain.members.QMembers;
+import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
@@ -29,7 +30,8 @@ public class GeneralProductCustomRepositoryImpl implements GeneralProductCustomR
                 .where(
                         userProdNoEq(paramGeneralProduct.getUserProdNo()),
                         usedPeriodEq(paramGeneralProduct.getUsedPeriod()),
-                        mbrIdEq(paramGeneralProduct.getMembers()==null ? null : paramGeneralProduct.getMembers().getMbrId())
+                        mbrIdEq(paramGeneralProduct.getMembers()==null ? null : paramGeneralProduct.getMembers().getMbrId()),
+                        mbrPhoneEq(paramGeneralProduct.getMembers()==null ? null : paramGeneralProduct.getMembers().getMbrPhone())
                 )
                 .fetch();
     }
@@ -53,5 +55,12 @@ public class GeneralProductCustomRepositoryImpl implements GeneralProductCustomR
             return null;
         }
         return generalProduct.members.mbrId.eq(mbrId);
+    }
+
+    private BooleanExpression mbrPhoneEq(String mbrPhone) {
+        if(mbrPhone == null) {
+            return null;
+        }
+        return generalProduct.members.mbrPhone.eq(mbrPhone);
     }
 }
