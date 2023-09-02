@@ -2,14 +2,11 @@ package com.jiok.purchase.web.controller;
 
 import com.jiok.purchase.domain.userProduct.GeneralProduct;
 import com.jiok.purchase.service.UserProductService;
-import com.jiok.purchase.web.dto.request.RequestGetUserProductManagement;
-import com.jiok.purchase.web.dto.response.ResponseGetUserProductManagement;
+import com.jiok.purchase.web.dto.request.RequestUserProductManagement;
+import com.jiok.purchase.web.dto.response.ResponseUserProductManagement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,24 +24,33 @@ public class UserProductManagementController {
      * @return
      */
     @GetMapping("/management")
-    public ResponseEntity<List<ResponseGetUserProductManagement>> getUserProductManagement(
+    public ResponseEntity<List<ResponseUserProductManagement>> getUserProductManagement(
             @RequestParam(name = "userProdNo", required = false) Long paramUserProdNo,
             @RequestParam(name = "usedPeriod", required = false) Integer paramUsedPeriod,
-            @RequestParam(name = "mbrId", required = false) Long paramMbrId
+            @RequestParam(name = "mbrId", required = false) Long paramMbrId,
+            @RequestParam(name = "mbrPhone", required = false) String paramMbrPhone
     ) {
         // entity로 바꾼다
         GeneralProduct generalProduct =
-                RequestGetUserProductManagement.toGeneralEntity(paramUserProdNo, paramUsedPeriod, paramMbrId);
+                RequestUserProductManagement.toGeneralEntity(paramUserProdNo, paramUsedPeriod, paramMbrId, paramMbrPhone);
 
         // service 호출
         List<GeneralProduct> generalProductList =
                 userProductService.findUserProductManagement(generalProduct);
 
         // dto로 바꾼다.
-        List<ResponseGetUserProductManagement> responseGetUserProductManagementList =
-                ResponseGetUserProductManagement.toGeneralDto(generalProductList);
+        List<ResponseUserProductManagement> responseUserProductManagementList =
+                ResponseUserProductManagement.toGeneralDto(generalProductList);
 
         // return
-        return ResponseEntity.ok().body(responseGetUserProductManagementList);
+        return ResponseEntity.ok().body(responseUserProductManagementList);
     }
+
+//
+//    @PatchMapping("/management/userPeriod")
+//    public ResponseEntity<List<ResponseUserProductManagement>> updateUsedPeriod (
+//
+//    ) {
+//        return null;
+//    }
 }
