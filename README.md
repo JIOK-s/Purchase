@@ -1,8 +1,15 @@
 # 지옥이들의 쇼핑몰 프로젝트
-## [워크플로우]
-### 배포플로우
+## [프로젝트 개요]
+소비자들이 물건을 사고 팔 수 있는 쇼핑몰 구축 프로젝트
+## [모듈 개요]
+Purchase 모듈은 소비자에게 물건을 구매하는 API를 담당하는 모듈이다.  
+## [GITHUB 주소]
+https://github.com/JIOK-s/Purchase
+
+## [웹 어플리케이션 아키텍처]
 <img src="img/work_flow.png">
 
+## [워크플로우]
 ### 코드 작성 플로우(TDD)
 1. 테스트코드 작성
 2. 로직 작성
@@ -90,5 +97,5 @@
     - 작업 내용이 병합 대상 브랜치와 현재 브랜치 간의 변경 내용을 세밀하게 통합해야 할 경우에 사용됩니다.
 
 ## [업무일지]
-[2023년 2분기 업무일지](./readmeDir/meetingLog/2023Y_2Q.md)<br>
-[2023년 3분기 업무일지](./readmeDir/meetingLog/2023Y_3Q.md)<br>
+[2023년 2분기 업무일지](https://github.com/JIOK-s/Purchase/blob/develop/readmeDir/meetingLog/2023Y_2Q.md)<br>
+[2023년 3분기 업무일지](https://github.com/JIOK-s/Purchase/blob/develop/readmeDir/meetingLog/2023Y_3Q.md)<br>
